@@ -1,0 +1,27 @@
+name: Pipeline Sistema Bancario
+
+on:
+  push:
+    branches: [ "principal" ]
+  pull_request:
+    branches: [ "principal" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Descargar el codigo
+      uses: actions/checkout@v4
+
+    - name: Configurar MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Configurar NuGet
+      uses: NuGet/setup-nuget@v1.2.0
+
+    - name: Restaurar paquetes NuGet
+      run: nuget restore SistemaBancario_P1.sln
+
+    - name: Compilar Solucion Completa
+      run: msbuild SistemaBancario_P1.sln /p:Configuration=Debug
