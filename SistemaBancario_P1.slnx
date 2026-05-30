@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../SistemaBancario.Tests/SistemaBancario.Tests.csproj" />
+  <Project Path="SistemaBancario_P1.csproj" />
+</Solution>
